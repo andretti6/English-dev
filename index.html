@@ -3,714 +3,464 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Job Interview — Learning Arena</title>
+    <title>AI Warning: We Have Only a Few Years? - A2 English</title>
     <style>
         :root {
-            --bg: #090a0f;
-            --panel: #12141c;
-            --panel-2: #1a1d29;
-            --border: #242838;
-            --text: #e3e6ed;
-            --muted: #7e869c;
-            --accent: #ffd23f;
-            --green: #3ecf8e;
-            --blue: #4d9fff;
-            --purple: #a78bfa;
-            --radius: 14px;
+            --bg-color: #0b0f19;
+            --card-bg: #151d30;
+            --accent-blue: #38bdf8;
+            --accent-green: #22c55e;
+            --accent-purple: #a855f7;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
         }
-        * { box-sizing: border-box; }
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            -webkit-font-smoothing: antialiased;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
         }
         
-        /* SETUP SCREEN */
-        #setup-screen {
-            position: fixed; inset: 0; background: var(--bg); z-index: 999;
-            display: flex; align-items: center; justify-content: center; padding: 20px;
+        /* Modern Header & Illustration Style Grid */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
         }
-        .setup-card {
-            background: var(--panel); border: 1px solid var(--border); padding: 32px;
-            border-radius: var(--radius); max-width: 400px; width: 100%; text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .ai-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
         }
-        .setup-card h2 { color: var(--accent); margin: 0 0 8px 0; font-size: 24px; }
-        .setup-card p { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
-        .setup-input {
-            width: 100%; background: var(--panel-2); border: 1px solid var(--border);
-            color: var(--text); padding: 14px; border-radius: 10px; margin-bottom: 16px; font-size: 15px;
-            outline: none; transition: 0.2s;
+        header h1 {
+            font-size: 2.4rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
-        .setup-input:focus { border-color: var(--accent); }
-
-        /* MAIN APP INTERFACE */
-        #app-main { display: none; }
-        .header {
-            background: var(--panel);
-            border-bottom: 1px solid var(--border);
-            position: sticky; top: 0; z-index: 100;
-        }
-        .topbar {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 14px 24px; max-width: 1000px; margin: 0 auto;
-        }
-        .brand { font-size: 14px; font-weight: 700; letter-spacing: .05em; color: var(--muted); }
-        .brand span { color: var(--accent); }
-        .topbar-actions { display: flex; align-items: center; gap: 12px; }
-        .avatar {
-            width: 34px; height: 34px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), #ff9248);
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; color: #000; font-size: 13px;
-        }
-        .nav-tabs {
-            display: flex; gap: 8px; padding: 0 24px; max-width: 1000px; margin: 0 auto;
-        }
-        .tab-btn {
-            background: none; border: none; color: var(--muted); padding: 12px 16px;
-            font-size: 14px; font-weight: 600; cursor: pointer; position: relative;
-            transition: 0.2s;
-        }
-        .tab-btn.active { color: var(--text); }
-        .tab-btn.active::after {
-            content: ''; position: absolute; bottom: 0; left: 16px; right: 16px; height: 3px;
-            background: var(--accent); border-radius: 2px;
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
         }
 
-        /* MAIN CONTAINER LAYER */
-        .main-container {
-            max-width: 760px; margin: 24px auto 80px auto; padding: 0 24px;
+        /* Abstract AI Illustration */
+        .illustration-box {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            height: 120px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
-        .view-section { display: none; }
-        .view-section.active { display: block; animation: fadeIn 0.3s ease; }
+        .illustration-box::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--accent-blue);
+            filter: blur(40px);
+            opacity: 0.3;
+            animation: float 4s infinite alternate;
+        }
+        .illustration-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            z-index: 1;
+        }
 
+        /* Article News Section */
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .news-card p {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 1.2rem;
+        }
+        .news-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Vocabulary Interactive Section */
+        .vocab-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .vocab-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .vocab-chip {
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .vocab-chip:hover {
+            border-color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.05);
+            transform: translateY(-2px);
+        }
+        .vocab-chip.active {
+            background: var(--accent-blue);
+            color: #0b0f19;
+            border-color: var(--accent-blue);
+            font-weight: bold;
+        }
+        .meaning-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.2rem;
+            border-radius: 8px;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .meaning-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        .meaning-text {
+            font-size: 1.05rem;
+            color: #f1f5f9;
+        }
+
+        /* Brainstorming Questions Section */
+        .questions-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+        }
+        .question-trigger {
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 14px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .question-trigger:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.15);
+        }
+        .question-num {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .question-icon {
+            font-size: 1.8rem;
+            color: var(--accent-purple);
+            font-weight: bold;
+        }
+        .question-text {
+            display: none;
+            padding: 0.8rem;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #fff;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        /* Revealed State */
+        .question-trigger.revealed {
+            background: #0b0f19;
+            border-color: var(--accent-green);
+            cursor: default;
+            height: auto;
+            min-height: 100px;
+        }
+        .question-trigger.revealed .question-num {
+            color: var(--accent-green);
+            margin-top: 0.5rem;
+        }
+        .question-trigger.revealed .question-icon {
+            display: none;
+        }
+        .question-trigger.revealed .question-text {
+            display: block;
+        }
+
+        /* Footer Reset Button */
+        .reset-container {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .btn-reset {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-reset:hover {
+            border-color: var(--accent-purple);
+            color: #fff;
+        }
+
+        @keyframes float {
+            0% { transform: scale(1) translate(0px, 0px); }
+            100% { transform: scale(1.1) translate(10px, -5px); }
+        }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
-
-        /* CLEAN UI CARDS */
-        .card {
-            background: var(--panel); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 24px; margin-bottom: 20px;
-        }
-        .mission-box {
-            text-align: center; background: radial-gradient(circle at 50% 0%, #171b2a, var(--panel));
-            padding-bottom: 18px;
-        }
-        .mission-box h5 { color: var(--accent); margin: 0 0 6px 0; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
-        .mission-box h1 { font-size: 22px; margin: 0 0 16px 0; line-height: 1.4; font-weight: 700; }
-        .edit-btn {
-            background: none; border: 1px dashed var(--border); color: var(--muted);
-            border-radius: 20px; padding: 6px 14px; font-size: 11px; cursor: pointer; transition: 0.2s;
-        }
-        .edit-btn:hover { border-color: var(--muted); color: var(--text); }
-
-        /* LIVE AVATARS STACK */
-        .team-live-bar {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        .avatar-stack { display: flex; flex-direction: row-reverse; justify-content: flex-end; }
-        .stack-member {
-            width: 28px; height: 28px; border-radius: 50%; background: var(--panel-2);
-            border: 2px solid var(--panel); display: flex; align-items: center; justify-content: center;
-            font-size: 10px; font-weight: 700; color: var(--accent); margin-left: -8px; transition: 0.2s;
-        }
-        .stack-member:last-child { margin-left: 0; }
-        .live-status-text { font-size: 12px; color: var(--muted); }
-
-        /* CYCLES AND STEPPER */
-        .cycle-stepper {
-            display: flex; justify-content: space-between; margin-bottom: 24px; position: relative;
-            background: var(--panel-2); padding: 8px; border-radius: 12px; border: 1px solid var(--border);
-        }
-        .step-node {
-            flex: 1; text-align: center; background: none; border: none; padding: 10px 6px;
-            color: var(--muted); cursor: pointer; border-radius: 8px; transition: 0.2s;
-            display: flex; flex-direction: column; align-items: center; gap: 4px;
-        }
-        .step-node .s-emoji { font-size: 16px; }
-        .step-node .s-name { font-size: 11px; font-weight: 700; }
-        .step-node.active { background: var(--panel); color: var(--text); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .step-node.active .s-name { color: var(--accent); }
-
-        /* QUESTIONS PANEL & SOFT SKILLS INTERNAL TASK */
-        .questions-pane {
-            background: var(--panel-2); border-radius: 12px; padding: 16px; border-left: 4px solid var(--accent);
-            margin-bottom: 24px;
-        }
-        .questions-pane h4 { margin: 0 0 8px 0; font-size: 13px; color: var(--muted); letter-spacing: 0.05em; }
-        .questions-pane ul { margin: 0 0 16px 0; padding-left: 20px; font-size: 14px; line-height: 1.6; color: var(--text); }
-        
-        .soft-skill-task-box {
-            padding-top: 14px; border-top: 1px dashed var(--border); margin-top: 14px;
-        }
-        .soft-skill-label {
-            font-size: 13px; color: var(--green); display: flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer;
-        }
-        .soft-skill-label input[type=checkbox] { accent-color: var(--green); width: 16px; height: 16px; margin: 0; cursor: pointer; }
-        .soft-skill-phrase { margin: 6px 0 0 24px; font-size: 13px; color: var(--muted); font-style: italic; }
-
-        /* VOCABULARY FLOATING WINDOW BOX */
-        .vocab-trigger-btn {
-            background: var(--panel-2); border: 1px solid var(--border); color: var(--accent);
-            padding: 8px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer;
-        }
-        .vocab-window {
-            position: fixed; bottom: 80px; right: 24px; width: 32px; max-width: 90%; background: var(--panel);
-            border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; z-index: 150;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6); display: none; width: 320px;
-        }
-        .vocab-window.show { display: block; animation: fadeIn 0.2s ease; }
-        .vocab-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
-        .vocab-header h4 { margin: 0; font-size: 14px; color: var(--accent); letter-spacing: 0.05em; }
-        .vocab-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 16px; font-weight: 700; }
-        .vocab-close:hover { color: var(--text); }
-        .vocab-content { font-size: 13px; line-height: 1.6; max-height: 250px; overflow-y: auto; color: var(--text); }
-
-        /* MENTOR CONTROLLER SECTION */
-        .mentor-badge {
-            background: var(--purple); color: #000; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700;
-        }
-        .mentor-selector {
-            width: 100%; background: var(--panel-2); border: 1px solid var(--border); color: var(--text);
-            padding: 10px; border-radius: 8px; font-size: 13px; font-weight: 600; outline: none; margin-top: 10px;
-        }
-
-        /* DYNAMIC MODE BUTTONS */
-        .dynamic-mode-container { display: none; margin-bottom: 20px; }
-        .mode-action-btn {
-            width: 100%; background: linear-gradient(135deg, var(--accent), #ff9248); color: #000;
-            border: none; padding: 14px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer;
-            text-align: center; box-shadow: 0 4px 15px rgba(255,210,63,0.2); transition: 0.2s;
-        }
-        .mode-action-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255,210,63,0.3); }
-
-        /* STICKY NOTES AND STUFF */
-        .sticky-row-list { display: flex; flex-direction: column; gap: 10px; }
-        .mini-note {
-            background: #252216; border: 1px solid #3d351d; color: #ffe596;
-            padding: 12px 16px; border-radius: 10px; font-size: 13px; line-height: 1.4;
-        }
-        .target-list { display: flex; flex-direction: column; gap: 2px; }
-        .target-item {
-            padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: flex-start; gap: 12px;
-        }
-        .target-item:last-child { border-bottom: none; }
-        .target-item input[type=checkbox] { accent-color: var(--green); width: 18px; height: 18px; margin-top: 1px; cursor: pointer; }
-        .target-item .label { font-size: 14px; line-height: 1.4; color: var(--text); }
-
-        /* IDEAS MATRIX */
-        .ideas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-        .student-arena-card {
-            background: var(--panel); border: 3px solid var(--border); border-radius: var(--radius);
-            padding: 18px; min-height: 220px; display: flex; flex-direction: column; position: relative;
-        }
-        .student-arena-card .student-name { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
-        .student-arena-card .focus-badge {
-            background: none; border: 3px solid var(--text); color: var(--text);
-            font-size: 14px; font-800; padding: 6px 12px; display: inline-block;
-            align-self: flex-start; margin-bottom: 14px; letter-spacing: 0.05em;
-        }
-        .student-arena-card .notes-body { font-size: 14px; color: var(--muted); font-family: monospace; line-height: 1.5; white-space: pre-line; flex: 1; }
-
-        .action-trigger-btn {
-            width: 100%; background: var(--panel-2); border: 2px dashed var(--border);
-            color: var(--muted); padding: 16px; border-radius: 12px; font-size: 14px;
-            font-weight: 600; cursor: pointer; text-align: center; transition: 0.2s;
-            margin-bottom: 20px;
-        }
-        .action-trigger-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-        /* MODALS LAYOUT */
-        .modal-bg {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
-            display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px;
-        }
-        .modal-bg.show { display: flex; }
-        .modal { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; width: 100%; max-width: 400px; }
-        .modal h3 { margin: 0 0 16px 0; font-size: 16px; }
-        .modal input[type=text], .modal textarea {
-            width: 100%; background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px;
-            color: var(--text); padding: 12px; font-size: 14px; font-family: inherit; outline: none; margin-bottom: 12px;
-        }
-        .modal textarea { resize: none; }
-        .modal input:focus, .modal textarea:focus { border-color: var(--accent); }
-        .modal .actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px; }
-        .btn { border: none; border-radius: 8px; padding: 10px 18px; font-size: 13px; font-weight: 600; cursor: pointer; }
-        .btn-primary { background: var(--accent); color: #000; }
-        .btn-ghost { background: none; border: 1px solid var(--border); color: var(--text); }
-        .toast {
-            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-            background: var(--panel-2); border: 1px solid var(--accent); color: var(--text);
-            padding: 10px 20px; border-radius: 30px; font-size: 13px; z-index: 300; opacity: 0; transition: 0.2s; pointer-events: none;
-        }
-        .toast.show { opacity: 1; }
     </style>
 </head>
 <body>
 
-<div id="setup-screen">
-    <div class="setup-card">
-        <h2>Welcome to Live Arena</h2>
-        <p>Type your name to connect to the global interview session:</p>
-        <input type="text" id="usernameInput" class="setup-input" placeholder="Your Name (e.g. Andre)" autofocus>
-        <button class="btn btn-primary" style="width:100%; padding:14px; font-size:14px;" onclick="connectUser()">Enter Live Session</button>
-    </div>
-</div>
+    <div class="container">
+        <header>
+            <span class="ai-badge">A2 English Reading & Speaking</span>
+            <h1>AI Warning: We Have Only a Few Years?</h1>
+            <p>Economists and technology leaders warn about rapid changes[cite: 1].</p>
+        </header>
 
-<div id="app-main">
-    <div class="header">
-        <div class="topbar">
-            <div class="brand">LEARNING <span>ARENA</span></div>
-            <div class="topbar-actions">
-                <button class="vocab-trigger-btn" onclick="toggleVocabWindow(true)">📖 View Vocabulary</button>
-                <div class="avatar" id="userAvatar">ME</div>
+        <!-- Graphic Illustration Card -->
+        <div class="illustration-box">
+            <div class="illustration-text">⚡ FUTURE INTELLIGENCE ⚡</div>
+        </div>
+
+        <!-- News Section -->
+        <div class="news-card">
+            <p>Almost 200 economists and technology leaders signed a letter[cite: 1]. They say artificial intelligence (AI) may change the world very fast[cite: 1]. They believe AI can change jobs, companies, and the economy faster than other new technologies in history[cite: 1]. They say countries have only a few years to prepare[cite: 1]. The change may be as big as the Industrial Revolution, but much faster[cite: 1].</p>
+            <p>The experts ask governments, schools, businesses, and workers to learn about AI and prepare for new opportunities and new problems[cite: 1].</p>
+        </div>
+
+        <!-- Vocabulary Trainer Section -->
+        <div class="vocab-section">
+            <div class="section-title">💡 Interactive Vocabulary (English Meanings)</div>
+            <div class="vocab-grid">
+                <!-- Word 1 -->
+                <div class="vocab-chip" onclick="showMeaning(this, 'economist', 'economista', 'A person who studies how money, trade, and industry are organized[cite: 1].')">economist</div>
+                <!-- Word 2 -->
+                <div class="vocab-chip" onclick="showMeaning(this, 'technology leader', 'líder de tecnologia', 'A top manager or expert who guides a tech company or creates new tech[cite: 1].')">technology leader</div>
+                <!-- Word 3 -->
+                <div class="vocab-chip" onclick="showMeaning(this, 'economy', 'economia', 'The system of how money, goods, and services are made and used in a country[cite: 1].')">economy</div>
+                <!-- Word 4 -->
+                <div class="vocab-chip" onclick="showMeaning(this, 'opportunity', 'oportunidade', 'A good chance or situation to do something successfully[cite: 1].')">opportunity</div>
+                <!-- Word 5 -->
+                <div class="vocab-chip" onclick="showMeaning(this, 'risk', 'risco', 'A possibility of something bad, dangerous, or negative happening[cite: 1].')">risk</div>
+                <!-- Word 6 -->
+                <div class="vocab-chip" onclick="showMeaning(this, 'prepare', 'preparar-se', 'To get ready for something that will happen in the future[cite: 1].')">prepare</div>
+            </div>
+            
+            <div class="meaning-box" id="meaning-display">
+                <div class="meaning-title" id="display-word">💡 Instruction</div>
+                <div class="meaning-text" id="display-definition">Click on any vocabulary word to reveal its translation and a very simple English explanation![cite: 1]</div>
             </div>
         </div>
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchView('session', this)">🎯 Session</button>
-            <button class="tab-btn" onclick="switchView('ideas', this)">💡 Ideas Board</button>
-            <button class="tab-btn" onclick="switchView('homework', this)">🏠 Homework</button>
+
+        <!-- Brainstorming Questions Section -->
+        <div class="questions-section">
+            <div class="section-title">🎤 Brainstorming Speaking Practice</div>
+            <div class="questions-grid">
+                <!-- Q1 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 1</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">What is AI?[cite: 1]</div>
+                </div>
+                <!-- Q2 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 2</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">How do you use AI today?[cite: 1]</div>
+                </div>
+                <!-- Q3 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 3</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">What jobs can AI help?[cite: 1]</div>
+                </div>
+                <!-- Q4 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 4</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">What jobs may change because of AI?[cite: 1]</div>
+                </div>
+                <!-- Q5 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 5</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">What are three good opportunities for Brazil with AI?[cite: 1]</div>
+                </div>
+                <!-- Q6 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 6</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">What are three risks for Brazil?[cite: 1]</div>
+                </div>
+                <!-- Q7 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 7</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">How can schools prepare students for AI?[cite: 1]</div>
+                </div>
+                <!-- Q8 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 8</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">What skills will be important in the future?[cite: 1]</div>
+                </div>
+                <!-- Q9 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 9</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">Can AI create new jobs? Give examples.[cite: 1]</div>
+                </div>
+                <!-- Q10 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 10</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">Should governments make rules for AI? Why?[cite: 1]</div>
+                </div>
+                <!-- Q11 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 11</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">How can AI help poor countries?[cite: 1]</div>
+                </div>
+                <!-- Q12 -->
+                <div class="question-trigger" onclick="revealQuestion(this)">
+                    <span class="question-num">Question 12</span>
+                    <span class="question-icon">❓</span>
+                    <div class="question-text">What do you think the world will look like in 10 years?[cite: 1]</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reset-container">
+            <button class="btn-reset" onclick="resetQuestions()">Hide Questions & Reset 🔄</button>
         </div>
     </div>
 
-    <div class="main-container">
+    <!-- Interactive Script -->
+    <script>
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
-        <!-- SESSION VIEW -->
-        <div id="view-session" class="view-section active">
-            <div class="card mission-box">
-                <h5>Today's Main Challenge</h5>
-                <h1 id="missionText">Global Job Interview Simulation: Pitch your talent to international companies!</h1>
-                <button class="edit-btn" onclick="openMissionModal()">Change Challenge Quest</button>
-
-                <div class="team-live-bar">
-                    <div class="avatar-stack" id="avatarStackBox"></div>
-                    <div class="live-status-text" id="liveStatusText">Connecting...</div>
-                </div>
-            </div>
-
-            <!-- DYNAMIC MODE TRIGGERED BY MENTOR -->
-            <div id="dynamicModeBoxSession" class="dynamic-mode-container">
-                <button class="mode-action-btn" id="dynamicModeBtnSession" onclick="triggerToastNotification('Get ready! Starting mode now... 🚀')">Launch Dynamic Task</button>
-            </div>
-
-            <div class="card" style="padding: 16px 20px;">
-                <h3 style="margin: 0 0 8px 0; font-size:13px; text-transform:uppercase; color:var(--muted)">🎯 Your Goals Today</h3>
-                <div id="targetsList" class="target-list"></div>
-            </div>
-
-            <div class="cycle-stepper" id="stepperElement"></div>
-            
-            <div class="questions-pane">
-                <h4>💡 QUESTIONS GUIDELINE FOR THIS STAGE:</h4>
-                <ul id="questionsList"></ul>
-                
-                <!-- SOFT SKILL TASK UNDER THE BOX -->
-                <div class="soft-skill-task-box" id="softSkillTaskBox">
-                    <label class="soft-skill-label">
-                        <input type="checkbox" id="softSkillCheckbox" onchange="triggerTargetFeedback(this)">
-                        <span>🎯 Your Partner's Soft Skill Task: <strong id="softSkillTitle">Skill</strong></span>
-                    </label>
-                    <p class="soft-skill-phrase" id="softSkillPhrase">"Phrase"</p>
-                </div>
-            </div>
-
-            <button class="action-trigger-btn" onclick="openNotesModal()">+ Click to type a fast session note / trick</button>
-            <div class="sticky-row-list" id="miniStickyList"></div>
-            
-            <!-- EXCLUSIVE MENTOR CONTROLLER INSIDE SESSION -->
-            <div class="card" style="margin-top: 30px; border-color: var(--purple);">
-                <div class="mentor-badge">👑 TEACHER & MENTOR ZONE</div>
-                <p style="font-size:13px; color:var(--muted); margin: 8px 0 0 0;">Control what students do next. Select a live challenge mode below:</p>
-                <select class="mentor-selector" id="mentorModeSelect" onchange="updateMentorMode(this.value)">
-                    <option value="none">❌ No Active Live Mode (Standard)</option>
-                    <option value="presentation">🎤 Launch Live Presentation Mode</option>
-                    <option value="roleplay">🎭 Launch Live Roleplay Mode</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- IDEAS VIEW -->
-        <div id="view-ideas" class="view-section">
-            <button class="action-trigger-btn" style="border-color: var(--accent); color: var(--accent);" onclick="openIdeaModal()">+ Drop/Update My Card on Board</button>
-            <div class="ideas-grid" id="ideasGrid"></div>
-        </div>
-
-        <!-- HOMEWORK VIEW -->
-        <div id="view-homework" class="view-section">
-            <div class="card">
-                <h2 style="color:var(--accent); font-size:18px; margin:0 0 8px 0;">🏠 Post-Class Homework Quest</h2>
-                <p style="font-size:14px; color:var(--muted); line-height:1.5; margin:0 0 16px 0;">
-                    Review your partner's notes from the Ideas Board, record a 2-minute audio answering the hard questions, and submit your portfolio summary below.
-                </p>
-                
-                <!-- DYNAMIC MODE TRIGGERED BY MENTOR IN HOMEWORK -->
-                <div id="dynamicModeBoxHomework" class="dynamic-mode-container">
-                    <button class="mode-action-btn" id="dynamicModeBtnHomework" onclick="triggerToastNotification('Opening Assignment Portal...')">Launch Homework Task</button>
-                </div>
-                
-                <textarea id="homeworkTextInput" placeholder="Paste your final polished interview answers here..." rows="6" style="width:100%; background:var(--panel-2); border:1px solid var(--border); border-radius:8px; color:var(--text); padding:12px; font-size:14px; font-family:inherit; outline:none; resize:none; margin-bottom:12px;"></textarea>
-                <button class="btn btn-primary" style="width:100%; padding:12px;" onclick="triggerToastNotification('Homework submitted successfully to your profile! ⭐')">Submit Homework Mission</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- FLOATING VOCABULARY WINDOW -->
-<div class="vocab-window" id="vocabWindow">
-    <div class="vocab-header">
-        <h4>📋 HIGH-IMPACT VOCABULARY</h4>
-        <button class="vocab-close" onclick="toggleVocabWindow(false)">×</button>
-    </div>
-    <div class="vocab-content">
-        • <strong>Key Achievement:</strong> Sua maior conquista ou resultado no passado.<br><br>
-        • <strong>To Mitigate Risks:</strong> Diminuir e gerenciar perigos em um projeto.<br><br>
-        • <strong>To Scaled up:</strong> Fazer uma operação crescer de tamanho de forma global.<br><br>
-        • <strong>Core Strengths:</strong> Suas maiores habilidades e pontos fortes principais.<br><br>
-        • <strong>To Overcome:</strong> Superar um grande obstáculo ou problema difícil.<br><br>
-        • <strong>Value Proposition:</strong> O valor real que você entrega para a empresa contratante.
-    </div>
-</div>
-
-<!-- MODALS -->
-<div class="modal-bg" id="missionModal">
-    <div class="modal">
-        <h3>✨ Edit Current Quest</h3>
-        <textarea id="missionInput" rows="3"></textarea>
-        <div class="actions">
-            <button class="btn btn-ghost" onclick="closeModal('missionModal')">Cancel</button>
-            <button class="btn btn-primary" onclick="submitMission()">Save Mission</button>
-        </div>
-    </div>
-</div>
-
-<div class="modal-bg" id="notesModal">
-    <div class="modal">
-        <h3>📝 Drop a Live Note</h3>
-        <textarea id="notesInput" placeholder="Type a quick observation, thought, or lesson learned..." rows="3"></textarea>
-        <div class="actions">
-            <button class="btn btn-ghost" onclick="closeModal('notesModal')">Cancel</button>
-            <button class="btn btn-primary" onclick="submitNote()">Add Note</button>
-        </div>
-    </div>
-</div>
-
-<div class="modal-bg" id="ideaModal">
-    <div class="modal">
-        <h3>💡 Publish/Update Your Arena Card</h3>
-        <input type="text" id="ideaFocusInput" placeholder="Main Topic Tag (e.g. PAST EXPERIENCE)">
-        <textarea id="ideaNotesInput" placeholder="Your interview response notes and keywords..." rows="5"></textarea>
-        <div class="actions">
-            <button class="btn btn-ghost" onclick="closeModal('ideaModal')">Cancel</button>
-            <button class="btn btn-primary" onclick="submitIdea()">Publish Card</button>
-        </div>
-    </div>
-</div>
-
-<div class="toast" id="toastElement"></div>
-
-<script>
-    /* =========================================================   
-       REAL-TIME APP STATE MANAGEMENT ENGINE
-       ========================================================= */
-    const FIREBASE_DB_URL = "https://english-meetings-f08e4-default-rtdb.firebaseio.com/";
-    let currentUser = localStorage.getItem('arena_user_v5') || '';
-    let currentStepIdx = 0;
-
-    // INTERVIEW CYCLES & PARTNER TASKS (SOFT SKILLS LEVEL A2)
-    const cycleData = [
-        {
-            emoji: '📊', 
-            name: 'PAST EXPERIENCE', 
-            q: ['What was your biggest achievement in your last job?', 'What did you learn from that specific project?', 'How did you use your skills to complete it?'],
-            skillTitle: 'Public Speaking (Comunicação em Público)',
-            skillPhrase: '🌱 "You have great points! Try to say your main idea in just one short sentence for the interviewer."'
-        },
-        {
-            emoji: '🧠', 
-            name: 'STRENGTHS', 
-            q: ['What is your biggest professional weakness?', 'How are you working to change or fix it?', 'What are your core strengths for this job?'],
-            skillTitle: 'Emotional Control (Gestão da Emoção)',
-            skillPhrase: '🌱 "Don\'t worry, this is a tough question! What is the best and calmest way to say this?"'
-        },
-        {
-            emoji: '🔒', 
-            name: 'CRISIS CONTROL', 
-            q: ['Tell me about a time you made a mistake at work.', 'What was the solution to fix the problem?', 'How do you handle high pressure and stressful days?'],
-            skillTitle: 'Problem Solving (Resolução de Problemas)',
-            skillPhrase: '🌱 "This is a big challenge! What was the first small step you took to fix it?"'
-        },
-        {
-            emoji: '🚀', 
-            name: 'FUTURE VALUE', 
-            q: ['Why should our international company hire you?', 'What is your main value proposition?', 'Where do you see your career in the next five years?'],
-            skillTitle: 'Persuasion (Persuasão)',
-            skillPhrase: '🌱 "Your idea is great! How can you say it in a way that makes the interviewer love it?"'
+        function playSound(freq, duration, type = 'sine') {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
         }
-    ];
 
-    const targetHabits = [
-        {label: '❓ Ask your partner about their past professional achievements'},
-        {label: '💡 Post 1 response card on the Live Ideas Board'},
-        {label: '🤝 Help your classmate improve their answers and structure'},
-        {label: '⏱️ Pitch your value proposition clearly in under 1 minute'}
-    ];
+        // Show English meaning and translation when clicked
+        function showMeaning(chip, word, ptTranslation, enMeaning) {
+            playSound(550, 0.08);
+            
+            // Remove active classes
+            document.querySelectorAll('.vocab-chip').forEach(c => c.classList.remove('active'));
+            
+            // Highlight current
+            chip.classList.add('active');
+            
+            // Change text in display box
+            document.getElementById('display-word').innerHTML = `${word.toUpperCase()} (${ptTranslation})[cite: 1]`;
+            document.getElementById('display-definition').innerHTML = enMeaning;
+        }
 
-    let globalState = { mission: '', stickies: [], ideas: [], team: {}, activeMode: 'none' };
-
-    if(currentUser) { bypassLoginScreen(); }
-
-    function connectUser() {
-        const name = document.getElementById('usernameInput').value.trim();
-        if(!name) { alert("Please type your name."); return; }
-        currentUser = name;
-        localStorage.setItem('arena_user_v5', currentUser);
-        bypassLoginScreen();
-    }
-
-    function bypassLoginScreen() {
-        document.getElementById('setup-screen').style.display = 'none';
-        document.getElementById('app-main').style.display = 'block';
-        document.getElementById('userAvatar').textContent = currentUser.slice(0,2).toUpperCase();
-        initializeSync();
-    }
-
-    async function initializeSync() {
-        await fetch(`${FIREBASE_DB_URL}/team/${currentUser}.json`, {
-            method: 'PUT',
-            body: JSON.stringify({ name: currentUser, ping: true })
-        });
-
-        fetchDatabaseState();
-        setInterval(fetchDatabaseState, 3000);
-        buildStepper();
-        renderActiveStepData();
-        renderFixedTargets();
-    }
-
-    async function fetchDatabaseState() {
-        try {
-            const resM = await fetch(`${FIREBASE_DB_URL}/mission.json`);
-            const missionData = await resM.json();
-            globalState.mission = missionData || "Global Job Interview Simulation: Pitch your talent to international companies!";
-
-            const resS = await fetch(`${FIREBASE_DB_URL}/miniStickies.json`);
-            const stickiesData = await resS.json();
-            globalState.stickies = stickiesData ? Object.values(stickiesData).reverse() : [];
-
-            const resI = await fetch(`${FIREBASE_DB_URL}/ideas.json`);
-            const ideasData = await resI.json();
-            globalState.ideas = ideasData ? Object.values(ideasData) : [];
-
-            const resT = await fetch(`${FIREBASE_DB_URL}/team.json`);
-            const teamData = await resT.json();
-            globalState.team = teamData || {};
-
-            const resMode = await fetch(`${FIREBASE_DB_URL}/activeMode.json`);
-            globalState.activeMode = await resMode.json() || 'none';
-
-            renderUIComponents();
-            syncDynamicModeButtons();
-        } catch(err) { console.log("Data connection issue: ", err); }
-    }
-
-    /* =========================================================   
-       UI VIEW AND ELEMENT RENDER CONTROL PIPELINE
-       ========================================================= */
-    function switchView(viewId, btnToken) {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
-
-        btnToken.classList.add('active');
-        document.getElementById(`view-${viewId}`).classList.add('active');
-    }
-
-    function toggleVocabWindow(show) {
-        const win = document.getElementById('vocabWindow');
-        if(show) win.classList.add('show'); else win.classList.remove('show');
-    }
-
-    function buildStepper() {
-        const container = document.getElementById('stepperElement');
-        container.innerHTML = cycleData.map((step, idx) => `
-            <button class="step-node ${idx === currentStepIdx ? 'active' : ''}" onclick="selectStep(${idx})">
-                <span class="s-emoji">${step.emoji}</span>
-                <span class="s-name">${step.name}</span>
-            </button>
-        `).join('');
-    }
-
-    function selectStep(idx) {
-        currentStepIdx = idx;
-        buildStepper();
-        renderActiveStepData();
-    }
-
-    function renderActiveStepData() {
-        const container = document.getElementById('questionsList');
-        container.innerHTML = cycleData[currentStepIdx].q.map(question => `<li>${question}</li>`).join('');
-        
-        // Render Soft Skill Task Details
-        document.getElementById('softSkillTitle').textContent = cycleData[currentStepIdx].skillTitle;
-        document.getElementById('softSkillPhrase').textContent = cycleData[currentStepIdx].skillPhrase;
-        document.getElementById('softSkillCheckbox').checked = false;
-    }
-
-    function renderFixedTargets() {
-        const targetsBox = document.getElementById('targetsList');
-        targetsBox.innerHTML = targetHabits.map((h, i) => `
-            <div class="target-item">
-                <input type="checkbox" id="chk-${i}" onchange="triggerTargetFeedback(this)">
-                <div class="label">${h.label}</div>
-            </div>
-        `).join('');
-    }
-
-    function syncDynamicModeButtons() {
-        const boxes = [document.getElementById('dynamicModeBoxSession'), document.getElementById('dynamicModeBoxHomework')];
-        const buttons = [document.getElementById('dynamicModeBtnSession'), document.getElementById('dynamicModeBtnHomework')];
-        
-        boxes.forEach((box, i) => {
-            if(globalState.activeMode === 'none') {
-                box.style.display = 'none';
-            } else {
-                box.style.display = 'block';
-                if(globalState.activeMode === 'presentation') {
-                    buttons[i].textContent = "🎤 START PRESENTATION MODE (LIVE TASK)";
-                } else if(globalState.activeMode === 'roleplay') {
-                    buttons[i].textContent = "🎭 START ROLEPLAY INTERVIEW MODE (LIVE TASK)";
-                }
+        // Reveal the hidden questions
+        function revealQuestion(card) {
+            if (!card.classList.contains('revealed')) {
+                playSound(650, 0.1, 'triangle');
+                card.classList.add('revealed');
             }
-        });
-    }
-
-    function renderUIComponents() {
-        document.getElementById('missionText').textContent = globalState.mission;
-
-        const stickiesBox = document.getElementById('miniStickyList');
-        stickiesBox.innerHTML = globalState.stickies.map(s => `<div class="mini-note">${escapeOutput(s)}</div>`).join('');
-
-        const ideasBox = document.getElementById('ideasGrid');
-        if (globalState.ideas.length === 0) {
-            ideasBox.innerHTML = `<p style="color:var(--muted); font-size:14px; grid-column: 1/-1; text-align:center; padding:20px;">No interview profiles posted yet. Be the first!</p>`;
-        } else {
-            ideasBox.innerHTML = globalState.ideas.map(idea => `
-                <div class="student-arena-card">
-                    <div class="student-name">${escapeOutput(idea.author)}</div>
-                    <div class="focus-badge">${escapeOutput(idea.focus || 'IDEA')}</div>
-                    <div class="notes-body">${escapeOutput(idea.notes || '')}</div>
-                </div>
-            `).join('');
         }
 
-        const members = Object.values(globalState.team);
-        const stackBox = document.getElementById('avatarStackBox');
-        stackBox.innerHTML = members.map(m => `
-            <div class="stack-member" title="${m.name}">${m.name.slice(0,2).toUpperCase()}</div>
-        `).join('');
-
-        const statusText = document.getElementById('liveStatusText');
-        if(members.length <= 1) {
-            statusText.textContent = "You are training alone right now";
-        } else {
-            const names = members.map(m => m.name).filter(n => n !== currentUser);
-            statusText.textContent = `${names.join(', ')} and you are training live!`;
+        // Reset everything
+        function resetQuestions() {
+            playSound(350, 0.15);
+            document.querySelectorAll('.question-trigger').forEach(card => {
+                card.classList.remove('revealed');
+            });
+            document.querySelectorAll('.vocab-chip').forEach(c => c.classList.remove('active'));
+            document.getElementById('display-word').innerHTML = '💡 Instruction';
+            document.getElementById('display-definition').innerHTML = 'Click on any vocabulary word to reveal its translation and a very simple English explanation![cite: 1]';
         }
-        
-        // Sync the mentor selector layout if empty or matches
-        const select = document.getElementById('mentorModeSelect');
-        if(document.activeElement !== select) {
-            select.value = globalState.activeMode;
-        }
-    }
-
-    /* =========================================================   
-       TRANSACTION WRITE DISPATCHERS (FIREBASE BACKEND)
-       ========================================================= */
-    async function updateMentorMode(value) {
-        await fetch(`${FIREBASE_DB_URL}/activeMode.json`, { method: 'PUT', body: JSON.stringify(value) });
-        triggerToastNotification(`Global challenge updated to: ${value.toUpperCase()}`);
-        fetchDatabaseState();
-    }
-
-    function openMissionModal() {
-        document.getElementById('missionInput').value = globalState.mission;
-        toggleModalOverlay('missionModal', true);
-    }
-    async function submitMission() {
-        const text = document.getElementById('missionInput').value.trim();
-        if(!text) return;
-        await fetch(`${FIREBASE_DB_URL}/mission.json`, { method: 'PUT', body: JSON.stringify(text) });
-        toggleModalOverlay('missionModal', false);
-        triggerToastNotification("Mission updated across live ecosystem!");
-        fetchDatabaseState();
-    }
-
-    function openNotesModal() {
-        document.getElementById('notesInput').value = '';
-        toggleModalOverlay('notesModal', true);
-    }
-    async function submitNote() {
-        const noteText = document.getElementById('notesInput').value.trim();
-        if(!noteText) return;
-        const styledText = `[${currentUser}]: ${noteText}`;
-        await fetch(`${FIREBASE_DB_URL}/miniStickies.json`, { method: 'POST', body: JSON.stringify(styledText) });
-        toggleModalOverlay('notesModal', false);
-        triggerToastNotification("Note captured live!");
-        fetchDatabaseState();
-    }
-
-    function openIdeaModal() {
-        const myExistingCard = globalState.ideas.find(i => i.author === currentUser);
-        document.getElementById('ideaFocusInput').value = myExistingCard ? myExistingCard.focus : '';
-        document.getElementById('ideaNotesInput').value = myExistingCard ? myExistingCard.notes : '';
-        toggleModalOverlay('ideaModal', true);
-    }
-    async function submitIdea() {
-        const focusText = document.getElementById('ideaFocusInput').value.trim();
-        const notesText = document.getElementById('ideaNotesInput').value.trim();
-        if(!focusText && !notesText) return;
-
-        const item = { focus: focusText || 'FOCUS', notes: notesText || '', author: currentUser };
-        await fetch(`${FIREBASE_DB_URL}/ideas/${currentUser}.json`, { method: 'PUT', body: JSON.stringify(item) });
-        toggleModalOverlay('ideaModal', false);
-        triggerToastNotification("Card published successfully to Ideas Board!");
-        fetchDatabaseState();
-    }
-
-    /* =========================================================   
-       UX DESIGN UTILITY HELPERS
-       ========================================================= */
-    function toggleModalOverlay(id, open) {
-        const element = document.getElementById(id);
-        if(open) element.classList.add('show'); else element.classList.remove('show');
-    }
-    function closeModal(id) { toggleModalOverlay(id, false); }
-
-    function triggerToastNotification(msg) {
-        const container = document.getElementById('toastElement');
-        container.textContent = msg;
-        container.classList.add('show');
-        setTimeout(() => container.classList.remove('show'), 2500);
-    }
-
-    function triggerTargetFeedback(checkboxToken) {
-        if(checkboxToken.checked) {
-            triggerToastNotification("Goal achieved! Excellent teamwork! 🚀");
-        }
-    }
-
-    function escapeOutput(str) {
-        const parser = document.createElement('div');
-        parser.textContent = str;
-        return parser.innerHTML;
-    }
-</script>
+    </script>
 </body>
 </html>
